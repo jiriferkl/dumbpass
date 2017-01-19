@@ -1,0 +1,31 @@
+{
+  "name": "jiriferkl/dumbpass",
+  "description": "Smart control of passwords.",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jiří Ferkl",
+      "email": "jiri.ferkl@protonmail.com",
+      "homepage": "https://jiriferkl.github.io/",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^7.0"
+  },
+  "autoload": {
+    "classmap": [
+      "src/"
+    ]
+  },
+  "autoload-dev": {
+    "classmap": [
+      "tests/"
+    ]
+  },
+  "require-dev": {
+  },
+  "config": {
+    "bin-dir": "bin"
+  }
+}
