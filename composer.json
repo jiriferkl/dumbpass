@@ -11,16 +11,12 @@
     }
   ],
   "require": {
-    "php": "^7.0"
+    "php": "^7.0",
+    "consistence/consistence": "^0.20.0"
   },
   "autoload": {
     "classmap": [
       "src/"
-    ]
-  },
-  "autoload-dev": {
-    "classmap": [
-      "tests/"
     ]
   },
   "require-dev": {
