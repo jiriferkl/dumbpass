@@ -58,9 +58,11 @@ class Criteria //TODO maybe final
 	}
 
 	/**
+	 * If TRUE -> numbers are enforced.
+	 *
 	 * @return boolean
 	 */
-	public function isNumberChars() : bool
+	public function areNumberCharsEnforced() : bool
 	{
 		return $this->numberChars;
 	}
@@ -80,9 +82,11 @@ class Criteria //TODO maybe final
 	}
 
 	/**
+	 * If TRUE -> capitals are enforced.
+	 *
 	 * @return boolean
 	 */
-	public function isCapitalChars() : bool
+	public function areCapitalCharsEnforced() : bool
 	{
 		return $this->capitalChars;
 	}
@@ -102,9 +106,11 @@ class Criteria //TODO maybe final
 	}
 
 	/**
+	 * If TRUE -> special chars are enforced.
+	 *
 	 * @return boolean
 	 */
-	public function isSpecialChars() : bool
+	public function areSpecialCharsEnforced() : bool
 	{
 		return $this->specialChars;
 	}
