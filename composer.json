@@ -19,7 +19,14 @@
       "src/"
     ]
   },
+  "autoload-dev": {
+    "classmap": [
+      "tests/"
+    ]
+  },
   "require-dev": {
+    "phpstan/phpstan": "^0.6.0",
+    "phpunit/phpunit": "^5.7"
   },
   "config": {
     "bin-dir": "bin"
