@@ -12,7 +12,8 @@
   ],
   "require": {
     "php": "^7.0",
-    "consistence/consistence": "^0.20.0"
+    "consistence/consistence": "^0.20.0",
+    "nette/neon": "^2.4"
   },
   "autoload": {
     "classmap": [
