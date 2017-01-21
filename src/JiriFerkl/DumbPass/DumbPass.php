@@ -67,7 +67,11 @@ class DumbPass //TODO maybe final
 		}
 
 		if ($criteria->isCommonPassCheck()) {
-			//TODO common pass check
+			if (!PassList::verify($pass)) {
+				$result = $result
+					->setValid(FALSE)
+					->addMessage(Messages::getMessage($loc, ErrorMessage::get(ErrorMessage::COMMON)));
+			}
 		}
 
 		return $result;

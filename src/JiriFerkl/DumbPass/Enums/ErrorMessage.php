@@ -16,5 +16,6 @@ class ErrorMessage extends Enum //TODO maybe final
 	const NUMERIC = 'numeric';
 	const CAPITAL = 'capital';
 	const SPECIAL = 'special';
+	const COMMON  = 'common';
 
 }
