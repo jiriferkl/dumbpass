@@ -49,9 +49,21 @@ class Messages //TODO maybe final
 	 */
 	public static function getNeonPath(Localization $loc) : string
 	{
-		$path = __DIR__ . '/Resource/Translation/' . $loc->getValue() . '.neon';
+		$path = self::getNeonBasePath() . $loc->getValue() . '.neon';
 
 		return $path;
+	}
+
+	/**
+	 * Gets base path for localization neons.
+	 *
+	 * @return string
+	 */
+	public static function getNeonBasePath() : string
+	{
+		$base = __DIR__ . '/Resource/Translation/';
+
+		return $base;
 	}
 
 }
