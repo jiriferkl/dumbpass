@@ -9,7 +9,7 @@ use Consistence\Enum\Enum;
  *
  * @package JiriFerkl\DumbPass\Enums
  */
-class ErrorMessage extends Enum //TODO maybe final
+final class ErrorMessage extends Enum
 {
 
 	const LENGTH  = 'length';

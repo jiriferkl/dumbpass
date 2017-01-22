@@ -9,7 +9,7 @@ use Consistence\Enum\Enum;
  *
  * @package JiriFerkl\DumbPass\Enums
  */
-class Localization extends Enum //TODO maybe final
+class Localization extends Enum //TODO maybe final but test
 {
 
 	const CZ = 'cz';

@@ -10,7 +10,7 @@ use JiriFerkl\DumbPass\Enums\Localization;
  *
  * @package JiriFerkl\DumbPass
  */
-class DumbPass //TODO maybe final
+class DumbPass //TODO maybe final + SOLID refactoring
 {
 
 	/**

@@ -7,7 +7,7 @@ namespace JiriFerkl\DumbPass;
  *
  * @package JiriFerkl\DumbPass
  */
-class Result //TODO maybe final
+final class Result
 {
 
 	/**
@@ -55,6 +55,7 @@ class Result //TODO maybe final
 	 */
 	public function addMessage(string $message) : Result
 	{
+		//TODO add key
 		$this->messages[] = $message;
 
 		return $this;

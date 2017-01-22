@@ -12,7 +12,7 @@ use Nette\Neon\Neon;
  *
  * @package JiriFerkl\DumbPass
  */
-class Messages //TODO maybe final
+final class Messages implements IMessages
 {
 
 	/**

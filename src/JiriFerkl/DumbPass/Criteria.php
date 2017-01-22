@@ -7,7 +7,7 @@ namespace JiriFerkl\DumbPass;
  *
  * @package JiriFerkl\DumbPass
  */
-class Criteria //TODO maybe final
+final class Criteria
 {
 
 	/**

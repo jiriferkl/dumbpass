@@ -7,7 +7,7 @@ namespace JiriFerkl\DumbPass;
  *
  * @package JiriFerkl\DumbPass
  */
-class PassList //TODO maybe final
+final class PassList implements IPassList
 {
 
 	/**
