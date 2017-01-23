@@ -10,15 +10,17 @@ use JiriFerkl\DumbPass\Enums\Localization;
  *
  * @package JiriFerkl\DumbPass
  */
-class DumbPass //TODO maybe final + SOLID refactoring
+final class DumbPass
 {
 
 	/**
 	 * Verify password by Criteria object.
 	 *
-	 * @param string        $pass
-	 * @param Criteria|NULL $criteria If null -> default object
-	 * @param Localization  $loc      Default EN
+	 * @param string            $pass     Password
+	 * @param Criteria|NULL     $criteria If null -> default object
+	 * @param Localization|NULL $loc      If null -> default EN
+	 * @param IMessages|NULL    $messages If null -> default object
+	 * @param IPassList|NULL    $passList If null -> default object
 	 *
 	 * @return Result
 	 * @throws Exception\DumbPassException
@@ -26,12 +28,26 @@ class DumbPass //TODO maybe final + SOLID refactoring
 	public static function verify(
 		string $pass,
 		Criteria $criteria = NULL,
-		Localization $loc = Localization::EN
+		Localization $loc = NULL,
+		IMessages $messages = NULL,
+		IPassList $passList = NULL
 	) : Result
 	{
-		//default criteria object
+		//default objects
 		if (!$criteria) {
 			$criteria = new Criteria();
+		}
+
+		if (!$loc) {
+			$loc = Localization::get(Localization::EN);
+		}
+
+		if (!$messages) {
+			$messages = new Messages();
+		}
+
+		if (!$passList) {
+			$passList = new PassList();
 		}
 
 		$result = new Result();
@@ -39,14 +55,20 @@ class DumbPass //TODO maybe final + SOLID refactoring
 		if (strlen($pass) < $criteria->getLength()) {
 			$result = $result
 				->setValid(FALSE)
-				->addMessage(Messages::getMessage($loc, ErrorMessage::get(ErrorMessage::LENGTH)));
+				->addMessage(
+					ErrorMessage::LENGTH,
+					$messages::getMessage($loc, ErrorMessage::get(ErrorMessage::LENGTH))
+				);
 		}
 
 		if ($criteria->areNumberCharsEnforced()) {
 			if (preg_match('/.*[0-9]{1,}.*/', $pass) === 0) {
 				$result = $result
 					->setValid(FALSE)
-					->addMessage(Messages::getMessage($loc, ErrorMessage::get(ErrorMessage::NUMERIC)));
+					->addMessage(
+						ErrorMessage::NUMERIC,
+						$messages::getMessage($loc, ErrorMessage::get(ErrorMessage::NUMERIC))
+					);
 			}
 		}
 
@@ -54,7 +76,10 @@ class DumbPass //TODO maybe final + SOLID refactoring
 			if (preg_match('/.*[A-Z]{1,}.*/', $pass) === 0) {
 				$result = $result
 					->setValid(FALSE)
-					->addMessage(Messages::getMessage($loc, ErrorMessage::get(ErrorMessage::CAPITAL)));
+					->addMessage(
+						ErrorMessage::CAPITAL,
+						$messages::getMessage($loc, ErrorMessage::get(ErrorMessage::CAPITAL))
+					);
 			}
 		}
 
@@ -62,15 +87,21 @@ class DumbPass //TODO maybe final + SOLID refactoring
 			if (preg_match('/.*[^a-zA-Z0-9]{1,}.*/', $pass) === 0) {
 				$result = $result
 					->setValid(FALSE)
-					->addMessage(Messages::getMessage($loc, ErrorMessage::get(ErrorMessage::SPECIAL)));
+					->addMessage(
+						ErrorMessage::SPECIAL,
+						$messages::getMessage($loc, ErrorMessage::get(ErrorMessage::SPECIAL))
+					);
 			}
 		}
 
 		if ($criteria->isCommonPassCheck()) {
-			if (!PassList::verify($pass)) {
+			if (!$passList::verify($pass)) {
 				$result = $result
 					->setValid(FALSE)
-					->addMessage(Messages::getMessage($loc, ErrorMessage::get(ErrorMessage::COMMON)));
+					->addMessage(
+						ErrorMessage::COMMON,
+						$messages::getMessage($loc, ErrorMessage::get(ErrorMessage::COMMON))
+					);
 			}
 		}
 

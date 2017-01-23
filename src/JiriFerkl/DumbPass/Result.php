@@ -49,14 +49,14 @@ final class Result
 	}
 
 	/**
+	 * @param string $key
 	 * @param string $message
 	 *
 	 * @return Result
 	 */
-	public function addMessage(string $message) : Result
+	public function addMessage(string $key, string $message) : Result
 	{
-		//TODO add key
-		$this->messages[] = $message;
+		$this->messages[$key] = $message;
 
 		return $this;
 	}
