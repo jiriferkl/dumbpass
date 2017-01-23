@@ -23,14 +23,9 @@ final class DumbPassTest extends TestCase
 
 		$result = DumbPass::verify($pass);
 
-		ErrorMessage::COMMON;
-		ErrorMessage::CAPITAL;
-		ErrorMessage::NUMERIC;
-		ErrorMessage::SPECIAL;
-		ErrorMessage::LENGTH;
-
 		$this->assertFalse($result->isValid(), self::getMessage($pass, FALSE));
 		$this->assertArrayHasKey(ErrorMessage::LENGTH, $result->getMessages());
+		$this->assertArrayNotHasKey(ErrorMessage::LOWER, $result->getMessages());
 		$this->assertArrayHasKey(ErrorMessage::COMMON, $result->getMessages());
 		$this->assertArrayHasKey(ErrorMessage::CAPITAL, $result->getMessages());
 		$this->assertArrayHasKey(ErrorMessage::NUMERIC, $result->getMessages());
@@ -42,6 +37,7 @@ final class DumbPassTest extends TestCase
 
 		$this->assertFalse($result->isValid(), self::getMessage($pass, FALSE));
 		$this->assertArrayNotHasKey(ErrorMessage::LENGTH, $result->getMessages());
+		$this->assertArrayHasKey(ErrorMessage::LOWER, $result->getMessages());
 		$this->assertArrayHasKey(ErrorMessage::COMMON, $result->getMessages());
 		$this->assertArrayHasKey(ErrorMessage::CAPITAL, $result->getMessages());
 		$this->assertArrayNotHasKey(ErrorMessage::NUMERIC, $result->getMessages());
@@ -52,6 +48,7 @@ final class DumbPassTest extends TestCase
 		$result = DumbPass::verify($pass);
 
 		$this->assertFalse($result->isValid(), self::getMessage($pass, FALSE));
+		$this->assertArrayHasKey(ErrorMessage::LOWER, $result->getMessages());
 		$this->assertArrayNotHasKey(ErrorMessage::LENGTH, $result->getMessages());
 		$this->assertArrayNotHasKey(ErrorMessage::COMMON, $result->getMessages());
 		$this->assertArrayNotHasKey(ErrorMessage::CAPITAL, $result->getMessages());
@@ -62,8 +59,21 @@ final class DumbPassTest extends TestCase
 
 		$result = DumbPass::verify($pass);
 
+		$this->assertFalse($result->isValid(), self::getMessage($pass, FALSE));
+		$this->assertArrayNotHasKey(ErrorMessage::LENGTH, $result->getMessages());
+		$this->assertArrayHasKey(ErrorMessage::LOWER, $result->getMessages());
+		$this->assertArrayNotHasKey(ErrorMessage::COMMON, $result->getMessages());
+		$this->assertArrayNotHasKey(ErrorMessage::CAPITAL, $result->getMessages());
+		$this->assertArrayNotHasKey(ErrorMessage::NUMERIC, $result->getMessages());
+		$this->assertArrayNotHasKey(ErrorMessage::SPECIAL, $result->getMessages());
+
+		$pass = '12@345A6a78910';
+
+		$result = DumbPass::verify($pass);
+
 		$this->assertTrue($result->isValid(), self::getMessage($pass, TRUE));
 		$this->assertArrayNotHasKey(ErrorMessage::LENGTH, $result->getMessages());
+		$this->assertArrayNotHasKey(ErrorMessage::LOWER, $result->getMessages());
 		$this->assertArrayNotHasKey(ErrorMessage::COMMON, $result->getMessages());
 		$this->assertArrayNotHasKey(ErrorMessage::CAPITAL, $result->getMessages());
 		$this->assertArrayNotHasKey(ErrorMessage::NUMERIC, $result->getMessages());

@@ -1,5 +1,6 @@
 length: "Minimal length of password has to be "
 numeric: "Password has to contain at least one number"
 capital: "Password has to contain at least one capital letter"
+lower: "Password has to contain at least one lower case letter"
 special: "Password has to contain at least one special character"
 common: "Password is just too common and is easy to crack. Try another "

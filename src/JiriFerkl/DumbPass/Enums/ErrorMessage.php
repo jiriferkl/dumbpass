@@ -17,5 +17,6 @@ final class ErrorMessage extends Enum
 	const CAPITAL = 'capital';
 	const SPECIAL = 'special';
 	const COMMON  = 'common';
+	const LOWER   = 'lower';
 
 }

@@ -1,5 +1,6 @@
 length: "Minimální délka hesla musí být "
 numeric: "Heslo musí obsahovat alespoň jedno číslo"
 capital: "Heslo musí obsahovat alespoň jedno velké písmeno"
+lower: "Heslo musí obsahovat alespoň jedno malé písmeno"
 special: "Heslo musí obsahovat alespoň jeden speciální znak"
 common: "Heslo je příliš běžné a jde lehce prolomit. Zvolte jiné"

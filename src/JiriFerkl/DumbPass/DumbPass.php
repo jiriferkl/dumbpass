@@ -83,6 +83,17 @@ final class DumbPass
 			}
 		}
 
+		if ($criteria->areLowerCaseCharsEnforced()) {
+			if (preg_match('/.*[a-z]{1,}.*/', $pass) === 0) {
+				$result = $result
+					->setValid(FALSE)
+					->addMessage(
+						ErrorMessage::LOWER,
+						$messages::getMessage($loc, ErrorMessage::get(ErrorMessage::LOWER))
+					);
+			}
+		}
+
 		if ($criteria->areSpecialCharsEnforced()) {
 			if (preg_match('/.*[^a-zA-Z0-9]{1,}.*/', $pass) === 0) {
 				$result = $result

@@ -28,12 +28,17 @@ final class Criteria
 	/**
 	 * @var bool
 	 */
+	private $lowerCaseChars = TRUE;
+
+	/**
+	 * @var bool
+	 */
 	private $specialChars = TRUE;
 
 	/**
 	 * @var bool
 	 */
-	private $commonPassCheck = TRUE; //TODO malé písmeno
+	private $commonPassCheck = TRUE;
 
 	/**
 	 * @return int
@@ -147,6 +152,28 @@ final class Criteria
 	public function allowCommonPassCheck(bool $commonPassCheck = TRUE) : Criteria
 	{
 		$this->commonPassCheck = $commonPassCheck;
+
+		return $this;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function areLowerCaseCharsEnforced() : bool
+	{
+		return $this->lowerCaseChars;
+	}
+
+	/**
+	 * Enforces lower case chars.
+	 *
+	 * @param boolean $lowerCaseChars
+	 *
+	 * @return Criteria
+	 */
+	public function enforceLowerCaseChars(bool $lowerCaseChars) : Criteria
+	{
+		$this->lowerCaseChars = $lowerCaseChars;
 
 		return $this;
 	}

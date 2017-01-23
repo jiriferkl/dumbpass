@@ -23,12 +23,14 @@ final class CriteriaTest extends TestCase
 		$length    = $criteria->getLength();
 		$number    = $criteria->areNumberCharsEnforced();
 		$capital   = $criteria->areCapitalCharsEnforced();
+		$lower     = $criteria->areLowerCaseCharsEnforced();
 		$special   = $criteria->areSpecialCharsEnforced();
 		$passCheck = $criteria->isCommonPassCheck();
 
 		$this->assertInternalType('integer', $length);
 		$this->assertInternalType('boolean', $number);
 		$this->assertInternalType('boolean', $capital);
+		$this->assertInternalType('boolean', $lower);
 		$this->assertInternalType('boolean', $special);
 		$this->assertInternalType('boolean', $passCheck);
 
@@ -37,6 +39,7 @@ final class CriteriaTest extends TestCase
 		$this->assertEquals($minLength, $length, sprintf('Default value has to be at least %d.', $minLength));
 		$this->assertTrue($number, 'Default value has to be TRUE.');
 		$this->assertTrue($capital, 'Default value has to be TRUE.');
+		$this->assertTrue($lower, 'Default value has to be TRUE.');
 		$this->assertTrue($special, 'Default value has to be TRUE.');
 		$this->assertTrue($passCheck, 'Default value has to be TRUE.');
 	}
