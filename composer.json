@@ -1,12 +1,15 @@
 {
   "name": "jiriferkl/dumbpass",
-  "description": "Smart control of passwords. You have to set absolutely nothing. Everything is pre-set. But you can set everything you like. It checks common passwords, length..",
+  "description": "Smart control of dumb passwords. Guard your users from security problems by preventing them from having dumb passwords.",
   "keywords": [
     "jiriferkl",
     "dumbpass",
     "password",
     "password check",
-    "common passwords"
+    "common passwords",
+    "dumb passwords",
+    "verify",
+    "validate"
   ],
   "license": "MIT",
   "homepage": "https://github.com/jiriferkl/dumbpass",
