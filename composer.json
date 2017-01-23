@@ -1,7 +1,15 @@
 {
   "name": "jiriferkl/dumbpass",
-  "description": "Smart control of passwords.",
+  "description": "Smart control of passwords. You have to set absolutely nothing. Everything is pre-set. But you can set everything you like. It checks common passwords, length..",
+  "keywords": [
+    "jiriferkl",
+    "dumbpass",
+    "password",
+    "password check",
+    "common passwords"
+  ],
   "license": "MIT",
+  "homepage": "https://github.com/jiriferkl/dumbpass",
   "authors": [
     {
       "name": "Jiří Ferkl",
@@ -15,6 +23,13 @@
     "consistence/consistence": "^0.20.0",
     "nette/neon": "^2.4"
   },
+  "require-dev": {
+    "phpstan/phpstan": "^0.6.0",
+    "phpunit/phpunit": "^5.7",
+    "jakub-onderka/php-parallel-lint": "^0.9.2",
+    "jakub-onderka/php-console-highlighter": "^0.3.2",
+    "brianium/paratest": "^0.14.0"
+  },
   "autoload": {
     "classmap": [
       "src/"
@@ -25,11 +40,17 @@
       "tests/"
     ]
   },
-  "require-dev": {
-    "phpstan/phpstan": "^0.6.0",
-    "phpunit/phpunit": "^5.7"
-  },
   "config": {
     "bin-dir": "bin"
+  },
+  "suggest": {
+    "nette/security": "Wonderful classes for password hashing/checking.."
+  },
+  "scripts": {
+    "test": [
+      "bin/phpstan analyze src/ tests/ -l 5",
+      "bin/parallel-lint src/ tests/",
+      "bin/paratest tests/ --bootstrap \"vendor/autoload.php\" --phpunit=\"bin/phpunit\""
+    ]
   }
 }
