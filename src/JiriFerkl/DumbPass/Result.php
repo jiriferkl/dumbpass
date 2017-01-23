@@ -21,7 +21,9 @@ final class Result
 	private $messages = [];
 
 	/**
-	 * @return boolean
+	 * Is password valid?
+	 *
+	 * @return boolean TRUE -> OK
 	 */
 	public function isValid() : bool
 	{

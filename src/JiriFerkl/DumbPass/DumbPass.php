@@ -57,7 +57,7 @@ final class DumbPass
 				->setValid(FALSE)
 				->addMessage(
 					ErrorMessage::LENGTH,
-					$messages::getMessage($loc, ErrorMessage::get(ErrorMessage::LENGTH))
+					$messages::getMessage($loc, ErrorMessage::get(ErrorMessage::LENGTH)) . $criteria->getLength()
 				);
 		}
 

@@ -143,6 +143,7 @@ final class MessagesTest extends TestCase
 		$path = Messages::getNeonPath(Localization::get(Localization::CZ));
 
 		$this->assertInternalType('string', $path);
+		$this->assertTrue((preg_match('/^.*\.neon$/', $path) === 1), 'Path has to end with ".neon"');
 	}
 
 }

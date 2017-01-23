@@ -33,7 +33,7 @@ final class Criteria
 	/**
 	 * @var bool
 	 */
-	private $commonPassCheck = TRUE;
+	private $commonPassCheck = TRUE; //TODO malé písmeno
 
 	/**
 	 * @return int

@@ -33,4 +33,15 @@ final class PassListTest extends TestCase
 		$this->assertFalse($ok, 'This password has not to be ok');
 	}
 
+	/**
+	 *
+	 */
+	public function testGetFilePath()
+	{
+		$path = PassList::getFilePath();
+
+		$this->assertInternalType('string', $path);
+		$this->assertTrue(file_exists($path), 'Password list file doesn\'t exist');
+	}
+
 }

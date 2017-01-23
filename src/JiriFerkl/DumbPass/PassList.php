@@ -20,13 +20,21 @@ final class PassList implements IPassList
 	 */
 	public static function verify(string $pass) : bool
 	{
-		$file = __DIR__ . '/Resource/passwordlist.txt';
+		$file = self::getFilePath();
 
 		$passwords = explode("\n", file_get_contents($file));
 
 		$ok = !in_array($pass, $passwords);
 
 		return $ok;
+	}
+
+	/**
+	 * @return string
+	 */
+	public static function getFilePath() : string
+	{
+		return __DIR__ . '/Resource/passwordlist.txt';
 	}
 
 }
