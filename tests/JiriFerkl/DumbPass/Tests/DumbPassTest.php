@@ -2,6 +2,7 @@
 
 namespace JiriFerkl\DumbPass\Tests;
 
+use JiriFerkl\DumbPass\Criteria;
 use JiriFerkl\DumbPass\DumbPass;
 use JiriFerkl\DumbPass\Enums\ErrorMessage;
 use PHPUnit\Framework\TestCase;
@@ -78,6 +79,77 @@ final class DumbPassTest extends TestCase
 		$this->assertArrayNotHasKey(ErrorMessage::CAPITAL, $result->getMessages());
 		$this->assertArrayNotHasKey(ErrorMessage::NUMERIC, $result->getMessages());
 		$this->assertArrayNotHasKey(ErrorMessage::SPECIAL, $result->getMessages());
+	}
+
+	/**
+	 *
+	 */
+	public function testVerifyNotDefault()
+	{
+		$pass     = '';
+		$criteria = new Criteria();
+		$criteria
+			->enforceCapitalChars(FALSE)
+			->enforceLowerCaseChars(FALSE)
+			->enforceNumberChars(FALSE)
+			->enforceSpecialChars(FALSE)
+			->allowCommonPassCheck(FALSE)
+			->setLength(0);
+
+		$result = DumbPass::verify($pass, $criteria);
+
+		$this->assertTrue($result->isValid(), self::getMessage($pass, TRUE));
+		$this->assertEquals([], $result->getMessages());
+	}
+
+	/**
+	 *
+	 */
+	public function testVerifyMessages()
+	{
+		$pass     = '';
+		$messages = new DummyMessages();
+
+		$result = DumbPass::verify($pass, NULL, NULL, $messages);
+
+		foreach ($result->getMessages() as $message) {
+			$this->assertTrue(preg_match('/.*test.*/', $message) === 1);
+		}
+
+		$pass = 'password';
+
+		$result = DumbPass::verify($pass, NULL, NULL, $messages);
+
+		foreach ($result->getMessages() as $message) {
+			$this->assertTrue(preg_match('/.*test.*/', $message) === 1);
+		}
+	}
+
+	/**
+	 *
+	 */
+	public function testVerifyPassList()
+	{
+		$pass     = '';
+		$passList = new DummyPassList();
+		$criteria = new Criteria();
+		$criteria
+			->enforceCapitalChars(FALSE)
+			->enforceLowerCaseChars(FALSE)
+			->enforceNumberChars(FALSE)
+			->enforceSpecialChars(FALSE)
+			->allowCommonPassCheck(TRUE)
+			->setLength(0);
+
+		$result = DumbPass::verify($pass, $criteria, NULL, NULL, $passList);
+
+		$this->assertFalse($result->isValid());
+
+		$pass = 'password';
+
+		$result = DumbPass::verify($pass, $criteria, NULL, NULL, $passList);
+
+		$this->assertFalse($result->isValid());
 	}
 
 	/**
