@@ -34,14 +34,14 @@
     "brianium/paratest": "^0.14.0"
   },
   "autoload": {
-    "classmap": [
-      "src/"
-    ]
+    "psr-4": {
+      "JiriFerkl\\DumbPass\\": "src/"
+    }
   },
   "autoload-dev": {
-    "classmap": [
-      "tests/"
-    ]
+    "psr-4": {
+      "JiriFerkl\\DumbPass\\Tests\\": "tests/"
+    }
   },
   "config": {
     "bin-dir": "bin"
