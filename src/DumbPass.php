@@ -54,7 +54,6 @@ final class DumbPass
 
 		if (strlen($pass) < $criteria->getLength()) {
 			$result = $result
-				->setValid(FALSE)
 				->addMessage(
 					ErrorMessage::LENGTH,
 					$messages->getMessage($loc, ErrorMessage::get(ErrorMessage::LENGTH)) . $criteria->getLength()
@@ -64,7 +63,6 @@ final class DumbPass
 		if ($criteria->areNumberCharsEnforced()) {
 			if (preg_match('/.*[0-9]{1,}.*/', $pass) === 0) {
 				$result = $result
-					->setValid(FALSE)
 					->addMessage(
 						ErrorMessage::NUMERIC,
 						$messages->getMessage($loc, ErrorMessage::get(ErrorMessage::NUMERIC))
@@ -75,7 +73,6 @@ final class DumbPass
 		if ($criteria->areCapitalCharsEnforced()) {
 			if (preg_match('/.*[A-Z]{1,}.*/', $pass) === 0) {
 				$result = $result
-					->setValid(FALSE)
 					->addMessage(
 						ErrorMessage::CAPITAL,
 						$messages->getMessage($loc, ErrorMessage::get(ErrorMessage::CAPITAL))
@@ -86,7 +83,6 @@ final class DumbPass
 		if ($criteria->areLowerCaseCharsEnforced()) {
 			if (preg_match('/.*[a-z]{1,}.*/', $pass) === 0) {
 				$result = $result
-					->setValid(FALSE)
 					->addMessage(
 						ErrorMessage::LOWER,
 						$messages->getMessage($loc, ErrorMessage::get(ErrorMessage::LOWER))
@@ -97,7 +93,6 @@ final class DumbPass
 		if ($criteria->areSpecialCharsEnforced()) {
 			if (preg_match('/.*[^a-zA-Z0-9]{1,}.*/', $pass) === 0) {
 				$result = $result
-					->setValid(FALSE)
 					->addMessage(
 						ErrorMessage::SPECIAL,
 						$messages->getMessage($loc, ErrorMessage::get(ErrorMessage::SPECIAL))
@@ -108,7 +103,6 @@ final class DumbPass
 		if ($criteria->isCommonPassCheck()) {
 			if (!$passList->verify($pass)) {
 				$result = $result
-					->setValid(FALSE)
 					->addMessage(
 						ErrorMessage::COMMON,
 						$messages->getMessage($loc, ErrorMessage::get(ErrorMessage::COMMON))

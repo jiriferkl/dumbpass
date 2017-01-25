@@ -11,11 +11,6 @@ final class Result
 {
 
 	/**
-	 * @var bool
-	 */
-	private $valid = TRUE;
-
-	/**
 	 * @var array
 	 */
 	private $messages = [];
@@ -27,7 +22,7 @@ final class Result
 	 */
 	public function isValid() : bool
 	{
-		return $this->valid;
+		return empty($this->messages);
 	}
 
 	/**
@@ -36,18 +31,6 @@ final class Result
 	public function getMessages() : array
 	{
 		return $this->messages;
-	}
-
-	/**
-	 * @param boolean $valid
-	 *
-	 * @return Result
-	 */
-	public function setValid(bool $valid) : Result
-	{
-		$this->valid = $valid;
-
-		return $this;
 	}
 
 	/**
