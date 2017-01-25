@@ -105,7 +105,9 @@ final class MessagesTest extends TestCase
 		$loc          = Localization::get(Localization::CZ);
 		$errorMessage = ErrorMessage::get(ErrorMessage::LENGTH);
 
-		$message = Messages::getMessage($loc, $errorMessage);
+		$messages = new Messages();
+
+		$message = $messages->getMessage($loc, $errorMessage);
 
 		$this->assertInternalType('string', $message);
 	}
@@ -121,7 +123,9 @@ final class MessagesTest extends TestCase
 		$this->expectException(DumbPassException::class);
 		$this->expectExceptionCode(DumbPassException::LOCALIZATION_FILE_NOT_FOUND);
 
-		Messages::getMessage($loc, $errorMessage);
+		$messages = new Messages();
+
+		$messages->getMessage($loc, $errorMessage);
 	}
 
 	/**

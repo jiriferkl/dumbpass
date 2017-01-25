@@ -57,7 +57,7 @@ final class DumbPass
 				->setValid(FALSE)
 				->addMessage(
 					ErrorMessage::LENGTH,
-					$messages::getMessage($loc, ErrorMessage::get(ErrorMessage::LENGTH)) . $criteria->getLength()
+					$messages->getMessage($loc, ErrorMessage::get(ErrorMessage::LENGTH)) . $criteria->getLength()
 				);
 		}
 
@@ -67,7 +67,7 @@ final class DumbPass
 					->setValid(FALSE)
 					->addMessage(
 						ErrorMessage::NUMERIC,
-						$messages::getMessage($loc, ErrorMessage::get(ErrorMessage::NUMERIC))
+						$messages->getMessage($loc, ErrorMessage::get(ErrorMessage::NUMERIC))
 					);
 			}
 		}
@@ -78,7 +78,7 @@ final class DumbPass
 					->setValid(FALSE)
 					->addMessage(
 						ErrorMessage::CAPITAL,
-						$messages::getMessage($loc, ErrorMessage::get(ErrorMessage::CAPITAL))
+						$messages->getMessage($loc, ErrorMessage::get(ErrorMessage::CAPITAL))
 					);
 			}
 		}
@@ -89,7 +89,7 @@ final class DumbPass
 					->setValid(FALSE)
 					->addMessage(
 						ErrorMessage::LOWER,
-						$messages::getMessage($loc, ErrorMessage::get(ErrorMessage::LOWER))
+						$messages->getMessage($loc, ErrorMessage::get(ErrorMessage::LOWER))
 					);
 			}
 		}
@@ -100,18 +100,18 @@ final class DumbPass
 					->setValid(FALSE)
 					->addMessage(
 						ErrorMessage::SPECIAL,
-						$messages::getMessage($loc, ErrorMessage::get(ErrorMessage::SPECIAL))
+						$messages->getMessage($loc, ErrorMessage::get(ErrorMessage::SPECIAL))
 					);
 			}
 		}
 
 		if ($criteria->isCommonPassCheck()) {
-			if (!$passList::verify($pass)) {
+			if (!$passList->verify($pass)) {
 				$result = $result
 					->setValid(FALSE)
 					->addMessage(
 						ErrorMessage::COMMON,
-						$messages::getMessage($loc, ErrorMessage::get(ErrorMessage::COMMON))
+						$messages->getMessage($loc, ErrorMessage::get(ErrorMessage::COMMON))
 					);
 			}
 		}

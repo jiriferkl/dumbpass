@@ -20,7 +20,7 @@ final class DummyPassList implements IPassList
 	 *
 	 * @return bool
 	 */
-	public static function verify(string $pass) : bool
+	public function verify(string $pass) : bool
 	{
 		return FALSE;
 	}

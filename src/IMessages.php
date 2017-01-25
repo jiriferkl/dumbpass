@@ -21,6 +21,6 @@ interface IMessages
 	 *
 	 * @return string
 	 */
-	public static function getMessage(Localization $loc, ErrorMessage $message) : string;
+	public function getMessage(Localization $loc, ErrorMessage $message) : string;
 
 }

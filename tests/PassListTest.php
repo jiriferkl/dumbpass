@@ -18,7 +18,9 @@ final class PassListTest extends TestCase
 	 */
 	public function testVerify()
 	{
-		$ok = PassList::verify('@t3st2__F');
+		$passList = new PassList();
+
+		$ok = $passList->verify('@t3st2__F');
 
 		$this->assertTrue($ok, 'This password has to be ok');
 	}
@@ -28,7 +30,9 @@ final class PassListTest extends TestCase
 	 */
 	public function testVerifyBadPass()
 	{
-		$ok = PassList::verify('password');
+		$passList = new PassList();
+
+		$ok = $passList->verify('password');
 
 		$this->assertFalse($ok, 'This password has not to be ok');
 	}

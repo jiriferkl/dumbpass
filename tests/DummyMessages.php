@@ -22,7 +22,7 @@ final class DummyMessages implements IMessages
 	 *
 	 * @return string
 	 */
-	public static function getMessage(Localization $loc, ErrorMessage $message) : string
+	public function getMessage(Localization $loc, ErrorMessage $message) : string
 	{
 		return 'test';
 	}

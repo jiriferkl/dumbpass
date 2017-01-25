@@ -24,7 +24,7 @@ final class Messages implements IMessages
 	 * @return string
 	 * @throws DumbPassException
 	 */
-	public static function getMessage(Localization $loc, ErrorMessage $message) : string
+	public function getMessage(Localization $loc, ErrorMessage $message) : string
 	{
 		$neon = self::getNeonPath($loc);
 
